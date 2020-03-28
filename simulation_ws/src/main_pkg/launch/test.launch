@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+	<arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+	<arg name="first_call" default ="true"/>
+	
+	<arg name="use_ground_truth_for_control" default="true"/>
+
+	<arg name="agent_name" default="uav1"/>
+	<arg name="nr" default="1"/> 
+
+
+<!-- deciding the value of arguments according to another argument value -->
+<!-- -->
+	<arg name="x" default="0"/>
+	<arg name="z" default="0.5"/>
+	<arg name="y" default="$(eval 3*arg('nr'))"/>
+
+	<!--arg name="y" if="$(eval arg('nr') - 1 > 0)" default="3"/>
+	<arg name="y" unless="$(eval arg('nr') - 1 > 0)" default="-5"/-->
+<!-- -->
+
+	<group if="$(arg first_call)">
+		<!-- include file="$(find gazebo_ros)/launch/empty_world.launch">
+		  <arg name="paused" value="$(arg paused)"/>
+		  <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+		  <arg name="gui" value="$(arg gui)"/>
+		  <arg name="headless" value="$(arg headless)"/>
+		  <arg name="debug" value="$(arg debug)"/>
+		</include -->
+		<include file="$(find hector_gazebo_worlds)/launch/willow_garage.launch"/>
+
+		<!-- Running the simulation control package for interaction with gazebo entities -->
+	
+		<include file="$(find simulation_control)/launch/simulation_control.launch"/>
+
+		<!-- Start rviz visualization with preset config -->
+
+		<node pkg="rviz" type="rviz" name="rviz" args="-d $(find hector_quadrotor_gazebo)/rviz/mapping_two_quadrotors.rviz"/>
+	</group>
+
+
+	<!-- Spawn quadcopter and goal Models and launch Slam and mapping process -->
+	<group ns="uav$(arg nr)">
+	
+		<!-- Spawn the quadcopter Model -->
+
+		<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+			<arg name="model" value="$(arg model)"/>
+			<arg name="use_ground_truth_for_control" value="$(arg use_ground_truth_for_control)"/>
+			<arg name="x" value="$(arg x)"/>
+			<arg name="y" value="$(arg y)"/>
+			<arg name="z" value="$(arg z)"/>
+			<arg name="tf_prefix" value="uav$(arg nr)" />
+			<arg name="name" value="uav$(arg nr)"/>
+		</include>
+
+		<!-- Spawn the goal and goal Model -->
+
+		<include file="$(find gazebo_features)/launch/spawn_massless_ball.launch">
+			<arg name="name" value="goal$(arg nr)"/>
+		</include>
+
+  	<!-- Start GeoTIFF mapper for the uav -->
+
+		<include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
+		  <arg name="trajectory_publish_rate" value="4"/>
+		</include>
+
+	</group>
+	
+	<!-- Start SLAM system for the uav -->
+
+	<include file="$(find hector_mapping)/launch/mapping_default.launch">
+	  <arg name="odom_frame" value="world"/>
+		<arg name="scan_topic" value="/uav$(arg nr)/scan"/>
+		<arg name="agent_name" value="uav$(arg nr)"/>
+		<arg name="pub_map_odom_transform" value="false"/>
+	</include>
+
+
+	<!-- Publish the transform between the map frame and the odom frame -->
+	<node pkg="tf" type="static_transform_publisher" name="map_world_broadcaster_uav$(arg nr)" args="$(arg x) $(arg y) 0 0 0 0 world uav$(arg nr)/map 100"/>
+
+	
+	
+	<!--group ns="uav$(arg nr)">
+		<node pkg="simulation_control" type="get_quadcopter_data.py" name="get_quadrotor_data" output="screen" args="$(arg agent_name)"/>
+	</group-->
+
+	<group if="$(arg first_call)">
+		<node pkg="main_pkg" type="test.py" name="test" output="screen" args="$(arg nr)"/>
+	</group>
+	
+
+	<include file="$(find main_pkg)/launch/test.launch" if="$(eval arg('nr') - 1 > 0)">
+		<arg name="nr" value="$(eval arg('nr') - 1)"/>
+		<arg name="agent_name" value="uav$(arg nr)"/>
+		<arg name="first_call" value="false"/>
+	</include>
+	
+
+</launch>

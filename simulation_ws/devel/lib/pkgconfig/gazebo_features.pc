@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel
+
+Name: gazebo_features
+Description: Description of gazebo_features
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel/lib 
+Requires: rospy gazebo_ros

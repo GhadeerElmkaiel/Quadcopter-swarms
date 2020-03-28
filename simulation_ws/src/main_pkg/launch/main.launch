@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+	<arg name="num_of_agents" default="2"/>
+	<node pkg="main_pkg" type="main.py" name="main" output="screen" args="$(arg num_of_agents)"/>
+</launch>

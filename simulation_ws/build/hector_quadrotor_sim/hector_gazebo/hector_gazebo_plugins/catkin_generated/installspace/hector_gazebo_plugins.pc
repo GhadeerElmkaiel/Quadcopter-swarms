@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install
+
+Name: hector_gazebo_plugins
+Description: Description of hector_gazebo_plugins
+Version: 0.5.1
+Cflags: -I/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install/include
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install/lib 
+Requires: roscpp std_msgs geometry_msgs nav_msgs tf message_runtime

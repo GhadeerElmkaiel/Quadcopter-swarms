@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel
+
+Name: main_pkg
+Description: Description of main_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel/lib 
+Requires: 

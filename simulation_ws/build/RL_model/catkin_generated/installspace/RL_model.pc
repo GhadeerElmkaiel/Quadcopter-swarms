@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install
+
+Name: RL_model
+Description: Description of RL_model
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install/lib 
+Requires: 

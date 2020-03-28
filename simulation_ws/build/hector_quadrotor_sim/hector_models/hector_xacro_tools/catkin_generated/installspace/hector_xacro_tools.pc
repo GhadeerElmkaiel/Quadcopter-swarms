@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install
+
+Name: hector_xacro_tools
+Description: Description of hector_xacro_tools
+Version: 0.4.2
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install/lib 
+Requires: 

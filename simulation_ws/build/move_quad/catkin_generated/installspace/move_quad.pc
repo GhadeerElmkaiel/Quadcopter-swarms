@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install
+
+Name: move_quad
+Description: Description of move_quad
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/install/lib 
+Requires: roscpp rospy std_msgs message_runtime

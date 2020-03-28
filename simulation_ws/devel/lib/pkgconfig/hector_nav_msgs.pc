@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel
+
+Name: hector_nav_msgs
+Description: Description of hector_nav_msgs
+Version: 0.3.5
+Cflags: -I/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel/include
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel/lib 
+Requires: nav_msgs geometry_msgs message_runtime

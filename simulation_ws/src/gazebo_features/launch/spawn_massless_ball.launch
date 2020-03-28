@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="name" default="goal"/>
+  <arg name="model" default="$(find gazebo_features)/urdf/green_massless_ball.urdf.xacro"/>
+
+  <arg name="x" default="4.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="1.5"/>
+
+	<param name="ball_description" command="$(find xacro)/xacro $(find gazebo_features)/urdf/green_massless_ball.urdf.xacro" />
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_ball" pkg="gazebo_ros" type="spawn_model"
+        args="-param ball_description
+           -urdf
+           -x $(arg x)
+           -y $(arg y)
+           -z $(arg z)
+           -model $(arg name)"
+        respawn="false" output="screen"/>
+
+</launch>

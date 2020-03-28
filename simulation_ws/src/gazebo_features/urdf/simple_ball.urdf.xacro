@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="simple_ball" params="id:=red mass:=0.25 radius:=0.0254 gazebo_color:=Red ">
+
+      <link name="${id}_ball">
+        <inertial>
+            <mass value="${mass}" />
+            <origin xyz="0 0 0" />
+            <inertia  ixx="${radius*radius*mass*2./5.}" ixy="0.0"  ixz="0.0"  iyy="${radius*radius*mass*2./5.}"  iyz="0.0"  izz="${radius*radius*mass*2./5.}" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <sphere radius="${radius}"/>
+          </geometry>
+        </visual>
+        <collision>s
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <sphere radius="0.0"/>
+          </geometry>
+        </collision>
+      </link>
+      <gazebo reference="${id}_ball">
+          
+          <!--material>Gazebo/${gazebo_color}</material-->
+					<material>Gazebo/Green</material>
+          <turnGravityOff>true</turnGravityOff>
+      </gazebo>
+
+  </xacro:macro>
+</robot>

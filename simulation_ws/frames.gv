@@ -1,0 +1,33 @@
+digraph G {
+"uav3/base_link" -> "uav3/front_cam_link"[label="Broadcaster: /uav3/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav3/base_stabilized" -> "uav3/base_link"[label="Broadcaster: /uav3/ground_truth_to_tf\nAverage rate: 101.299 Hz\nMost recent transform: 49.600 ( 0.002 sec old)\nBuffer length: 0.770 sec\n"];
+"uav3/front_cam_link" -> "uav3/front_cam_optical_frame"[label="Broadcaster: /uav3/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav3/base_link" -> "uav3/laser0_frame"[label="Broadcaster: /uav3/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav3/base_link" -> "uav3/sonar_link"[label="Broadcaster: /uav3/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav2/base_link" -> "uav2/front_cam_link"[label="Broadcaster: /uav2/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav2/base_stabilized" -> "uav2/base_link"[label="Broadcaster: /uav2/ground_truth_to_tf\nAverage rate: 101.316 Hz\nMost recent transform: 49.601 ( 0.001 sec old)\nBuffer length: 0.760 sec\n"];
+"uav2/front_cam_link" -> "uav2/front_cam_optical_frame"[label="Broadcaster: /uav2/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav2/base_link" -> "uav2/laser0_frame"[label="Broadcaster: /uav2/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav2/base_link" -> "uav2/sonar_link"[label="Broadcaster: /uav2/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav1/base_link" -> "uav1/front_cam_link"[label="Broadcaster: /uav1/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav1/base_stabilized" -> "uav1/base_link"[label="Broadcaster: /uav1/ground_truth_to_tf\nAverage rate: 101.333 Hz\nMost recent transform: 49.595 ( 0.007 sec old)\nBuffer length: 0.750 sec\n"];
+"uav1/front_cam_link" -> "uav1/front_cam_optical_frame"[label="Broadcaster: /uav1/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav1/base_link" -> "uav1/laser0_frame"[label="Broadcaster: /uav1/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"uav1/base_link" -> "uav1/sonar_link"[label="Broadcaster: /uav1/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 49.602 sec old)\nBuffer length: 0.000 sec\n"];
+"world" -> "uav3/base_footprint"[label="Broadcaster: /uav3/ground_truth_to_tf\nAverage rate: 101.299 Hz\nMost recent transform: 49.600 ( 0.002 sec old)\nBuffer length: 0.770 sec\n"];
+"uav3/base_footprint" -> "uav3/base_stabilized"[label="Broadcaster: /uav3/ground_truth_to_tf\nAverage rate: 101.299 Hz\nMost recent transform: 49.600 ( 0.002 sec old)\nBuffer length: 0.770 sec\n"];
+"world" -> "uav3/map"[label="Broadcaster: /map_world_broadcaster_uav3\nAverage rate: 11.412 Hz\nMost recent transform: 49.640 ( -0.038 sec old)\nBuffer length: 0.701 sec\n"];
+"world" -> "uav2/map"[label="Broadcaster: /map_world_broadcaster_uav2\nAverage rate: 11.412 Hz\nMost recent transform: 49.640 ( -0.038 sec old)\nBuffer length: 0.701 sec\n"];
+"world" -> "uav2/base_footprint"[label="Broadcaster: /uav2/ground_truth_to_tf\nAverage rate: 101.316 Hz\nMost recent transform: 49.601 ( 0.001 sec old)\nBuffer length: 0.760 sec\n"];
+"uav2/base_footprint" -> "uav2/base_stabilized"[label="Broadcaster: /uav2/ground_truth_to_tf\nAverage rate: 101.316 Hz\nMost recent transform: 49.601 ( 0.001 sec old)\nBuffer length: 0.760 sec\n"];
+"uav2/map" -> "uav2_scanmatcher_frame"[label="Broadcaster: /uav2_hector_mapping\nAverage rate: 39.947 Hz\nMost recent transform: 49.566 ( 0.036 sec old)\nBuffer length: 0.751 sec\n"];
+"uav1/map" -> "uav1_scanmatcher_frame"[label="Broadcaster: /uav1_hector_mapping\nAverage rate: 37.940 Hz\nMost recent transform: 49.558 ( 0.044 sec old)\nBuffer length: 0.738 sec\n"];
+"world" -> "uav1/map"[label="Broadcaster: /map_world_broadcaster_uav1\nAverage rate: 11.551 Hz\nMost recent transform: 49.640 ( -0.038 sec old)\nBuffer length: 0.606 sec\n"];
+"world" -> "uav1/base_footprint"[label="Broadcaster: /uav1/ground_truth_to_tf\nAverage rate: 101.333 Hz\nMost recent transform: 49.595 ( 0.007 sec old)\nBuffer length: 0.750 sec\n"];
+"uav1/base_footprint" -> "uav1/base_stabilized"[label="Broadcaster: /uav1/ground_truth_to_tf\nAverage rate: 101.333 Hz\nMost recent transform: 49.595 ( 0.007 sec old)\nBuffer length: 0.750 sec\n"];
+"uav3/map" -> "uav3_scanmatcher_frame"[label="Broadcaster: /uav3_hector_mapping\nAverage rate: 40.214 Hz\nMost recent transform: 49.590 ( 0.012 sec old)\nBuffer length: 0.746 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 49.602"[ shape=plaintext ] ;
+ }->"world";
+}

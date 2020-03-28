@@ -1,0 +1,8 @@
+prefix=/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel
+
+Name: gmapping
+Description: Description of gmapping
+Version: 1.4.1
+Cflags: 
+Libs: -L/home/ghadeer/My_Files/Master/Project/ROS/simulation_ws/devel/lib 
+Requires: 
